@@ -1,0 +1,252 @@
+Version Control- What & Why?
+Version Control Tools
+GitHub & Git
+case study:
+Git features
+
+
+What is Git?
+
+What is GitHub?
+
+
+What is Version Control System?
+Version control is the management of change to documents,
+computer programs large websites, and other collections of information.
+These changes are usually termed as "Versions."
+
+Everytime you make change in a project, it creates a snapshot of a entire project and saves it.
+And these snapshots are known as different "versions".
+Snapshot(Nothing but a stage of a project at a particular time):what files, what kind of change we did.
+
+Why Version Control?
+Collaboration:
+with a version control system:we will have who,what, at what time changes did for the application.
+Combines all the tasks of different persons
+
+Storing Versions:
+Snapshots of all versions are properly documented and stored.
+versions are also named accurately.
+without version control system:
+how much you would you save?
+entire project?----------Lot of space is required
+Only save changes?-----Confusion
+Naming Version?----confusion(difference between projects dates and time and persons did.)
+
+Backup
+In any case if your central server crashes, a backup is always available in your local servers.
+			central server
+				|
+				|
+Local copy1		LocalCopy2	LocalCopy3
+
+Analyze:
+When you change version:
+vcs provides you with proper description
+what exactly was changed
+when it was changed
+and hence you can analyze how your project evolved between versions.
+
+Version Control tools:
+1.Git---Distributed version control system
+2.Subversion------|Concurrent(won't have local copy:these are centralised copy)
+3.CVS-------------|
+4.Mercurial---Distributed version control system
+
+	Distributed version control system
+		Repository
+		    | |
+  | |		    | |		   | |	
+Repository	Repository	Repository
+ | |		    | |		   | |		    
+WOrking Copy1	WOrking Copy2	WOrking Copy3
+
+Server(repository)<--------->Push/PUll<------>Repository(Local)<------>Commit/update<------->WorkingCopy(Working Copy)
+
+
+What is a Repository?
+A directory or storage space where your projects can live. It can be local to a folder on oyour computer, or it can 
+be a storage space on GITHUB or another online host. You can keep code files,text files,images,you name it inside a repository.
+There are two types of repositories:
+1. Central repository
+2. Local Repository
+
+
+Central Repository:(stores in Compressed format)
+1. Typically located on remote server
+2. Exclusively consists of ".git" repository folder
+3. Meant for team to share and exchange data.
+
+Local Repository(stores in Uncompressed format)
+1. Typically located on Local Machine
+2. Resides as .git folder inside your projects root.
+3. Only admin of the machine can work with this repo.
+
+Git Operations and Commands:
+
+1. Creating Repositories(git init)
+2. Synchronising repositiories:(add origin,push,pull)
+3. Making Changes(Status,add,commit)
+4. Parallel development(branch,merge,rebuse)
+
+
+
+Creating Repositories:
+1. "git init":(if you are starting a new project)
+Install Git on your local machine and use "git init" to create your.
+TO use git for already existing project
+2. "git clone":
+Download or clone your repository from github.
+
+Synchronise Repos:
+github<-------->git
+1. use "git add origin<link>" to add remote repo(origin--remote repository)
+2. Pull files with "git pull" (to fetch files use)
+3. push your own changes into central repo with "git push"(to get files from github)
+
+########################################################################################
+git remote add origin "https://........"(this will get all files into local repository)
+##############################################################################
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+git pull origin master(it will fetch all the files into our local repository)
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+we should not change frequently the remote repository
+git push
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+git status:tells you which files are added to index and are ready to commit.
+git Add : Lets you add files to your index
+git commit: It refers to recording snapshots of the repository at a given time.
+		Comitted snapshots will never change unless done explicitly.
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+untracked :
+untracked files are not added to the index/staging area
+Modified:
+files data is changed
+git log: to look at the committed files.
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Parallel Development -Branching:
+
+Branches are pointers to a specific commit
+Branches are of two types:
+1.Local Braches(local repo)
+2.Remote-tracking Branches(remote repo)
+
+Create a different branch: First Branch
+git branch firstbranch
+
+moving one branch to other branch
+git checkout firstbranch
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Parallel Development -Merging:
+1. It is a way to combine the work of different branches together.
+2. Allows to branch off, develop a new feature and combine it back in.
+Merge branch:(always be in destination git command prompt before merging)
+git merge nameofbranch
+
+git merge firstbranch
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Parallel Development -Rebasing:
+1. This is also a way of combining the work between differnt branches
+2. It can be used to make a linear sequence of commits.
+git rebase firstbranch
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+git push:
+when your are pushing changes: 
+you need to have some access security to others for that
+before pushing your changes to remote
+get the ssh key from the github-sshkey
+
+to genrate ssh for our files:
+ssh-keygen
+y
+git hub--->settings--->ssh and gpg keys
+paste your ssh key there----->addd ssh key.
+To get Authentication
+ssh -T git@github.com
+
+==================================================================================
+if you dont want to work in master branch and you want to own branch no one can view it
+go to your branch
+
+git push origin firstbranch
+
+Git Basic Commands:
+git --version---This shows version of git
+git init: This command turns a directory into an empty Git Repository
+git add filename: Adds files to the staging area for git files---------->staging area
+git add . :Adds all the files
+git commit -m "label": Records the changes to the files in a local repository:For every reference,each commit has a ID
+git status: This command returns the current state of the repository(returns current working branch-------->if a is in the staging area, but not committed, it shows with git status
+		)If there are no changes it'll return nothing to commit, working directory clean.
+git config: Name and EMail(Name and Email address assigned to commits from a local computer) there are many but most important are these two
+git config --global user.name "Asha"
+git config --global user.email "Asha"
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Git Branch:
+git will have a master by default:
+
+git branch :shows alll the branches
+ create and check in that branch
+git branch branchname
+ create and stay in master branch
+
+Delete branch
+git branch -d feature
+
+git checkout -b branchname
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+git pull : this pull the changes from the remote repository to the local computer
+git push : sends local commits to the remote repository
+
+git clone path
+git push orgin master()
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Git stash: to save changes made when they're not in a state to commit them to a repository
+@@@@@@@@@@@@@@@@@@@@
+git stash -u
+git stash list
+git stash apply
+git status
+@@@@@@@@@@@@@@@@@@@@@
+git log: This helps give context and history fora a repository
+git rebase: takes a set of commits, copies them and stores them outside your repository
+git revert: It helps you to roll back to the previous version of the file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
